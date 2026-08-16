@@ -1,5 +1,8 @@
 name: Check arXiv for zonoid
 
+permissions:
+  contents: write
+
 on:
   schedule:
     - cron: "0 8 * * *"
