@@ -12,7 +12,7 @@ from email.mime.multipart import MIMEMultipart
 # SETTINGS
 # ============================================================
 
-SEARCH_QUERY = 'ti:zonoid OR abs:zonoid'
+SEARCH_QUERY = 'ti:zonoid OR abs:zonoid OR ti:zonotope OR abs:zonotope'
 
 ARXIV_API_URL = "https://export.arxiv.org/api/query?"
 
