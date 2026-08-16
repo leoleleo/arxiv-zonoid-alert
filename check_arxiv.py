@@ -27,7 +27,7 @@ encoded_query = urllib.parse.quote(SEARCH_QUERY)
 
 url = (
     ARXIV_API_URL
-    f"search_query={encoded_query}"
+    + f"search_query={encoded_query}"
     "&start=0"
     "&max_results=50"
     "&sortBy=submittedDate"
