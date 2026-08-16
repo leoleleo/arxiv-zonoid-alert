@@ -169,10 +169,10 @@ message["From"] = sender
 message["To"] = recipient
 
 if len(new_papers) == 1:
-    message["Subject"] = "New arXiv paper mentioning 'zonoid'"
+    message["Subject"] = "New arXiv paper mentioning 'zonoid' or 'zonotope'"
 else:
     message["Subject"] = (
-        f"{len(new_papers)} new arXiv papers mentioning 'zonoid'"
+        f"{len(new_papers)} new arXiv papers mentioning 'zonoid'or 'zonotope'"
     )
 
 
