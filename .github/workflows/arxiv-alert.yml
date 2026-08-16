@@ -1,0 +1,34 @@
+name: Check arXiv for zonoid
+
+on:
+  schedule:
+    - cron: "0 8 * * *"
+  workflow_dispatch:
+
+jobs:
+  check-arxiv:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Check arXiv
+        run: python check_arxiv.py
+        env:
+          EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
+
+      - name: Save list of already-seen papers
+        run: |
+          git config user.name "arXiv Alert"
+          git config user.email "actions@github.com"
+          git add seen_papers.json
+          git diff --cached --quiet || git commit -m "Update seen papers"
+          git push
